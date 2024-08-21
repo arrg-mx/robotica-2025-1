@@ -1,4 +1,4 @@
-# Lab. Robotica - 2025-I
+# Lab. Robótica - 2025-I
 
 ## Contenido
 
