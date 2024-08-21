@@ -3,4 +3,8 @@
 ## Contenido
 
 1. Introducción
+2. Prácticas
+3. Examen
+4. Proyecto
+
 
