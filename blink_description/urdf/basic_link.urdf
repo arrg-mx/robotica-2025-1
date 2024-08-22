@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="basic_link">
+
+    <link name="world">
+    </link>
+
+    <joint name="world_to_base_link" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+    
+
+    <link name="base_link">
+        <!--Descripcion de la parte visual del eslabon-->
+        <visual>
+            <!--Posicion y orientacion de origen del eslabon-->
+            <origin xyz="0.0 0.0 0.075" rpy="0.0 0.0 0.0"/>
+            <!--Definición de la geometria del eslabón-->
+            <geometry>
+                <box size="0.1 0.12 0.15"/>             
+            </geometry>
+            <!--Definicion del color del eslabon-->
+            <material name="grey">
+                <color rgba="0.5 0.5 0.5 1.0" />
+            </material>      
+        </visual>
+        <!--Descripcion de las relaciones de colision-->
+        <collision>
+            <!--Posicion y orientacion de origen del eslabon-->
+            <origin xyz="0.0 0.0 0.075" rpy="0.0 0.0 0.0"/>
+            <!--Definicion de la geometria del eslabon-->
+            <geometry>
+                <box size="0.1 0.12 0.15"/>             
+            </geometry>          
+        </collision>
+        <!--Descripcion de la inercial del eslabon-->
+        <inertial>
+            <!--masa del eslabon-->
+            <mass value="0.5"/>
+            <!--Ubicacion del sistema inercial asociado al centro de masa-->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <!--Matriz de inercia en el centro de masa-->
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/> 
+        </inertial>
+        
+    </link>
+
+    <link name="link_1">
+        <!--Descripcion de la parte visual del eslabon-->
+        <visual>
+            <!--Posicion y orientación de origen del eslabon-->
+            <origin xyz="0.025 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <!--Definición de la geometria del eslabón-->
+            <geometry>
+                <box size="0.05 0.05 0.5"/>             
+            </geometry>
+            <!--Definicion del color del eslabon-->
+            <material name="red">
+                <color rgba="0.5 0.0 0.0 1.0" />
+            </material>      
+        </visual>
+        <!--Descripcion de las relaciones de colision-->
+        <collision>
+            <!--Posicion y orientacion de origen del eslabon-->
+            <origin xyz="0.025 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <!--Definicion de la geometria del eslabon-->
+            <geometry>
+                <box size="0.05 0.05 0.5"/>             
+            </geometry>          
+        </collision>
+        <!--Descripcion de la inercial del eslabon-->
+        <inertial>
+            <!--masa del eslabon-->
+            <mass value="0.3"/>
+            <!--Ubicacion del sistema inercial asociado al centro de masa-->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <!--Matriz de inercia en el centro de masa-->
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/> 
+        </inertial>
+    </link>
+
+   <joint name="base_link_to_link_1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-3.14159" upper="3.14159" velocity="50.0" effort="1000.0"/>
+    <origin xyz="0.05 0 0.15" rpy="0 0 0"/>
+   </joint>
+
+    <!--Definicion en Gazebo-->
+
+    <gazebo reference="base_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="link_1">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+    <!--Fin de la definicion de Gazebo-->
+
+    <!--Definicion del control-->
+
+    <transmission name ="trans_1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_link_to_link_1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor_1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <gazebo>
+        <plugin name="joint_state_publisher_controller"
+                filename="libgazebo_ros_joint_state_publisher.so">
+            <!-- Update rate in Hertz -->
+            <update_rate>10</update_rate>
+            <!-- Name of joints in the model whose states will be published. -->
+            <joint_name>base_link_to_link_1</joint_name>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="joint_pose_trajectory_controller"
+                filename="libgazebo_ros_joint_pose_trajectory.so">
+            <!-- Update rate in Hz -->
+            <update_rate>2</update_rate>
+        </plugin>
+    </gazebo>
+
+    <!--Fin de la definicion del control-->
+
+</robot>
