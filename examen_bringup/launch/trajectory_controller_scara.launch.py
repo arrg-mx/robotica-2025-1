@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
@@ -19,6 +21,9 @@ def generate_launch_description():
 
     xacro_file = os.path.join( package_path , 'urdf', 'scara_trajectory_controller.xacro' )
 
+    rviz_config_path = os.path.join( get_package_share_directory('dofbot_bringup'),
+                                    'rviz', 'scara_trayectory_rviz.rviz')
+
     doc = xacro.parse(open(xacro_file))
     xacro.process_doc(doc)
     params = {'robot_description': doc.toxml()}    
@@ -28,6 +33,12 @@ def generate_launch_description():
         executable='robot_state_publisher',
         output='screen',
         parameters=[params]
+    )
+
+    rviz2_node = Node(
+        package="rviz2",
+        executable="rviz2",
+        arguments=['-d', rviz_config_path]
     )
 
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
@@ -45,8 +56,6 @@ def generate_launch_description():
              'joint_state_broadcaster'],
         output='screen' 
     )
-
-    
     
     return LaunchDescription([
         RegisterEventHandler(
@@ -64,5 +73,6 @@ def generate_launch_description():
         gazebo,
         node_robot_state_publisher,
         spawn_entity,
+        rviz2_node,
         
     ])

@@ -19,7 +19,7 @@ find_package(control_msgs REQUIRED) #for ros control
 
 
 install(
-  DIRECTORY launch rviz world src world
+  DIRECTORY launch rviz world src
   DESTINATION share/${PROJECT_NAME}/
 )
 
@@ -31,6 +31,7 @@ ament_python_install_package(${PROJECT_NAME})
 install(PROGRAMS
   src/trajectory_test.py
   src/tray_test.py
+  src/multi_tray.py
   DESTINATION lib/${PROJECT_NAME} )
 
 ament_package()
