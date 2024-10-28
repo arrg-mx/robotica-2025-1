@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Robot_3R_URDF_description">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-8.6736E-19 1.0408E-17 0.019134"
+        rpy="0 0 0" />
+      <mass
+        value="1.604" />
+      <inertia
+        ixx="0.0011774"
+        ixy="-4.8711E-20"
+        ixz="-3.6375E-21"
+        iyy="0.0011774"
+        iyz="-5.648E-20"
+        izz="0.0014939" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Robot_3R_URDF_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="gris">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Robot_3R_URDF_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="wrist_link">
+    <inertial>
+      <origin
+        xyz="-1.4745E-17 6.9389E-18 -0.014114"
+        rpy="0 0 0" />
+      <mass
+        value="0.10454" />
+      <inertia
+        ixx="6.053E-05"
+        ixy="-5.9702E-21"
+        ixz="-2.2069E-21"
+        iyy="4.8429E-05"
+        iyz="-1.8968E-21"
+        izz="6.1877E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Robot_3R_URDF_description/meshes/wrist_link.STL" />
+      </geometry>
+      <material
+        name="rojo">
+        <color
+          rgba="0.5 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Robot_3R_URDF_description/meshes/wrist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_wrist_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.085"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wrist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="10.1"
+      velocity="2.96" />
+  </joint>
+  <link
+    name="forearm">
+    <inertial>
+      <origin
+        xyz="4.0766E-17 6.9389E-18 0.10324"
+        rpy="0 0 0" />
+      <mass
+        value="1.0352" />
+      <inertia
+        ixx="0.005353"
+        ixy="-3.0072E-20"
+        ixz="-1.7699E-18"
+        iyy="0.0053379"
+        iyz="-3.847E-19"
+        izz="0.00028546" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Robot_3R_URDF_description/meshes/forearm.STL" />
+      </geometry>
+      <material
+        name="verde">
+        <color
+          rgba="0 0.5 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Robot_3R_URDF_description/meshes/forearm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_forearm"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="wrist_link" />
+    <child
+      link="forearm" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="10.1"
+      velocity="2.96" />
+  </joint>
+  <link
+    name="arm">
+    <inertial>
+      <origin
+        xyz="3.9899E-17 1.3878E-17 0.1255"
+        rpy="0 0 0" />
+      <mass
+        value="0.80522" />
+      <inertia
+        ixx="0.0054673"
+        ixy="-1.4431E-20"
+        ixz="-1.7858E-18"
+        iyy="0.0054852"
+        iyz="-6.8372E-19"
+        izz="0.00014089" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Robot_3R_URDF_description/meshes/arm.STL" />
+      </geometry>
+      <material
+        name="azul">
+        <color
+          rgba="0 0 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Robot_3R_URDF_description/meshes/arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="forearm_arm_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.25"
+      rpy="0 0 0" />
+    <parent
+      link="forearm" />
+    <child
+      link="arm" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="10.1"
+      velocity="2.96" />
+  </joint>
+  <link
+    name="end_efector">
+    <inertial>
+      <origin
+        xyz="-5.5511E-17 -1.7347E-17 -0.162"
+        rpy="0 0 0" />
+      <mass
+        value="0.80522" />
+      <inertia
+        ixx="0.0054673"
+        ixy="-1.4431E-20"
+        ixz="-1.7889E-18"
+        iyy="0.0054852"
+        iyz="-6.8399E-19"
+        izz="0.00014089" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Robot_3R_URDF_description/meshes/end_efector.STL" />
+      </geometry>
+      <material
+        name="blue">
+        <color
+          rgba="0 0 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Robot_3R_URDF_description/meshes/end_efector.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm_end_efector_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.2875"
+      rpy="0 0 0" />
+    <parent
+      link="arm" />
+    <child
+      link="end_efector" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
