@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Dofbot_Arm">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.03495 -1.669E-06 0.026249"
+        rpy="0 0 0" />
+      <mass
+        value="0.30824" />
+      <inertia
+        ixx="0.00024694"
+        ixy="-2.4709E-10"
+        ixz="2.446E-09"
+        iyy="0.00093961"
+        iyz="-1.1178E-09"
+        izz="0.0011789" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="waist_link">
+    <inertial>
+      <origin
+        xyz="4.0766E-08 -9.5693E-05 0.079382"
+        rpy="0 0 0" />
+      <mass
+        value="0.051689" />
+      <inertia
+        ixx="1.1117E-05"
+        ixy="-1.7636E-21"
+        ixz="2.599E-21"
+        iyy="9.658E-06"
+        iyz="-1.3982E-20"
+        izz="1.6341E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/waist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 1 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/waist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_waist_joint"
+    type="revolute">
+    <origin
+      xyz="0.07217 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="waist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.618"
+      upper="2.618"
+      effort="1.5"
+      velocity="3.1416" />
+  </joint>
+  <link
+    name="shoulder_link">
+    <inertial>
+      <origin
+        xyz="-0.0026577 -0.0001513 0.036757"
+        rpy="0 0 0" />
+      <mass
+        value="0.039014" />
+      <inertia
+        ixx="1.684E-05"
+        ixy="1.1195E-09"
+        ixz="1.3557E-10"
+        iyy="1.3033E-05"
+        iyz="2.4457E-09"
+        izz="7.6638E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/shoulder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 1 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="waist_shoulder_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0017793 0.00049752 0.10498"
+      rpy="0 0 0" />
+    <parent
+      link="waist_link" />
+    <child
+      link="shoulder_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.618"
+      upper="2.618"
+      effort="1.5"
+      velocity="3.1416" />
+  </joint>
+  <link
+    name="arm_link">
+    <inertial>
+      <origin
+        xyz="-0.0029633 -0.0001513 0.036757"
+        rpy="0 0 0" />
+      <mass
+        value="0.039014" />
+      <inertia
+        ixx="1.684E-05"
+        ixy="1.1195E-09"
+        ixz="1.3557E-10"
+        iyy="1.3033E-05"
+        iyz="2.4457E-09"
+        izz="7.6638E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/arm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 1 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/arm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_arm_joint"
+    type="revolute">
+    <origin
+      xyz="0.00030564 0 0.084119"
+      rpy="0 0 0" />
+    <parent
+      link="shoulder_link" />
+    <child
+      link="arm_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.618"
+      upper="2.618"
+      effort="1.5"
+      velocity="3.1416" />
+  </joint>
+  <link
+    name="wrist_link">
+    <inertial>
+      <origin
+        xyz="-0.003355 -1.0383E-05 0.035742"
+        rpy="0 0 0" />
+      <mass
+        value="0.04388" />
+      <inertia
+        ixx="1.4107E-05"
+        ixy="1.0323E-09"
+        ixz="-9.7935E-07"
+        iyy="1.5344E-05"
+        iyz="3.5666E-09"
+        izz="9.3532E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/wrist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 1 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/wrist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm_wrist_joint"
+    type="revolute">
+    <origin
+      xyz="0.00030564 0 0.084119"
+      rpy="0 0 0" />
+    <parent
+      link="arm_link" />
+    <child
+      link="wrist_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.618"
+      upper="2.618"
+      effort="1.5"
+      velocity="3.1416" />
+  </joint>
+  <link
+    name="hand_link">
+    <inertial>
+      <origin
+        xyz="0.013681 -0.0021076 0.025809"
+        rpy="0 0 0" />
+      <mass
+        value="0.05608" />
+      <inertia
+        ixx="9.7798E-06"
+        ixy="-1.9352E-08"
+        ixz="-6.004E-08"
+        iyy="3.7845E-06"
+        iyz="3.1265E-08"
+        izz="8.1837E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/hand_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 1 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/hand_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_hand_joint"
+    type="revolute">
+    <origin
+      xyz="0.0016634 -4.333E-05 0.078049"
+      rpy="0 0 0" />
+    <parent
+      link="wrist_link" />
+    <child
+      link="hand_link" />
+    <axis
+      xyz="0.0020642 0 1" />
+    <limit
+      lower="-2.618"
+      upper="2.618"
+      effort="1.5"
+      velocity="3.1416" />
+  </joint>
+  <link
+    name="end_efector">
+    <inertial>
+      <origin
+        xyz="-0.0023697 -0.0012951 -0.042439"
+        rpy="0 0 0" />
+      <mass
+        value="0.024858" />
+      <inertia
+        ixx="4.761E-06"
+        ixy="1.6573E-11"
+        ixz="6.7243E-09"
+        iyy="3.3465E-06"
+        iyz="-8.0284E-09"
+        izz="1.5035E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/end_efector.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Dofbot_Arm/meshes/end_efector.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="EF"
+    type="fixed">
+    <origin
+      xyz="-0.00017603 0 0.085277"
+      rpy="0 0 0" />
+    <parent
+      link="hand_link" />
+    <child
+      link="end_efector" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
